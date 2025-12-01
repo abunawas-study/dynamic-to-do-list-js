@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function(){
         }
 
     }
+      function saveTasksToLocalStorage() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
     function loadTasks() {
     const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
 
