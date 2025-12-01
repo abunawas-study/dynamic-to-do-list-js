@@ -23,6 +23,35 @@ document.addEventListener('DOMContentLoaded', function(){
         }
 
     }
+    function loadTasks() {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+
+    if (Array.isArray(storedTasks)) {
+      // Replace in-memory array with stored tasks
+      tasks = storedTasks.slice();
+
+      // Render each stored task: pass save = false to avoid saving again
+      tasks.forEach(t => {
+        addTask(t, false);
+      });
+    } else {
+      tasks = [];
+    }
+  }
+
+  // Event listeners
+  addButton.addEventListener('click', function () {
+    addTask();
+  });
+
+  taskInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+      addTask();
+    }
+  });
+
+  // Initialize by loading tasks from Local Storage
+  
 
     addButton.addEventListener('click', addTask);
     classList.add('remove-btn');
@@ -32,4 +61,5 @@ document.addEventListener('DOMContentLoaded', function(){
             
         }
 })
+    loadTasks();
 });
