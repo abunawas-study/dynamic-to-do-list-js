@@ -23,10 +23,13 @@ document.addEventListener('DOMContentLoaded', function(){
         }
 
     }
+
     addButton.addEventListener('click', addTask);
+    classList.add('remove-btn');
     taskInput.addEventListener('keypress', function(event){
         if(event.key === 'Enter'){
             addTask();
+            
         }
 })
 });
